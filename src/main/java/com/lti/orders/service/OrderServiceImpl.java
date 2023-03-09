@@ -16,6 +16,7 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public long totalProductOrders(int productId) {
+
         long count = 0;
         for(Order o:repo.findAll()){
             if(productId==o.getpId())
