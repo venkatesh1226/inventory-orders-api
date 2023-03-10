@@ -10,6 +10,11 @@ import com.azure.core.util.*;
 import com.azure.storage.queue.*;
 import com.azure.storage.queue.models.*;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+import java.util.Base64.Decoder;
+import java.util.Base64.Encoder;
+
 @Service
 public class OrderServiceImpl implements OrderService{
     @Autowired
@@ -46,7 +51,11 @@ public class OrderServiceImpl implements OrderService{
                     .queueName("venkatesh-orders-queue")
                     .buildClient();
             //converting to json using gson
-            queueClient.sendMessage(new Gson().toJson(o).toString());
+            Encoder encoder=Base64.getEncoder();
+            String val=new Gson().toJson(o).toString();
+            byte[] data =val.getBytes(StandardCharsets.UTF_8);
+            String encodedString=encoder.encodeToString(data);
+            queueClient.sendMessage(encodedString);
         }
         catch (QueueStorageException e){
             System.out.println(e.getMessage());
