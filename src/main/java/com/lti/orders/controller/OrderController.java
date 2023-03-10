@@ -13,16 +13,17 @@ public class OrderController {
 
     @Autowired
     OrderService service;
-    @GetMapping(value={"/test"})
-    public String getFactories(){
-        System.out.println("******Hello World********");
-        return "Test order places";
-    }
 
     @PostMapping(value={"/order"})
     public int placeOrder(@RequestBody Order o){
         return service.placeOrder(o);
     }
+
+    @PutMapping(value={"/status"})
+    public boolean updateOrderStatus(@RequestBody Order o){
+        return service.updateOrder(o);
+    }
+
 
     @GetMapping(value={"/count/{id}"})
     public long totalProductOrders(@PathVariable int id){

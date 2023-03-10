@@ -14,17 +14,27 @@ public class Order {
     private int pId;
     private int count;
     private long time;
+    private String status;
 
-    public Order(int orderId, int pId, int fId, int count, long time) {
+
+    public Order(int orderId, int pId, int count, long time, String status) {
         this.orderId = orderId;
         this.pId = pId;
         this.count = count;
         this.time = time;
+        this.status = status;
     }
-
 
     Order(){
 
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public int getOrderId() {
