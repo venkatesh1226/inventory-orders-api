@@ -46,7 +46,7 @@ public class OrderServiceImpl implements OrderService{
                     .queueName("venkatesh-orders-queue")
                     .buildClient();
             //converting to json using gson
-            queueClient.sendMessage(new Gson().toJson(o));
+            queueClient.sendMessage(new Gson().toJson(o).toString());
         }
         catch (QueueStorageException e){
             System.out.println(e.getMessage());
