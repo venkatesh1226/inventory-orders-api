@@ -50,7 +50,7 @@ public class OrderServiceImpl implements OrderService{
                     .connectionString(connectStr)
                     .queueName("venkatesh-orders-queue")
                     .buildClient();
-            queueClient.sendMessage(""+o.getOrderId());
+            queueClient.sendMessage(Base64.getEncoder().encodeToString((""+o.getOrderId()).getBytes()));
 
 
         }
