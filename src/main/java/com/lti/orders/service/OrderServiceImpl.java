@@ -50,16 +50,18 @@ public class OrderServiceImpl implements OrderService{
                     .connectionString(connectStr)
                     .queueName("venkatesh-orders-queue")
                     .buildClient();
-            //converting to json using gson
-            Encoder encoder=Base64.getEncoder();
-            String val=new Gson().toJson(o).toString();
-            byte[] data =val.getBytes(StandardCharsets.UTF_8);
-            String encodedString=encoder.encodeToString(data);
-            queueClient.sendMessage(encodedString);
+            queueClient.sendMessage(""+o.getOrderId());
+
+
         }
         catch (QueueStorageException e){
             System.out.println(e.getMessage());
         }
+    }
+
+    @Override
+    public Order getOrder(int id) {
+        return repo.findById(id).get();
     }
 
 

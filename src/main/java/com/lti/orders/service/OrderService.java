@@ -11,4 +11,5 @@ public interface OrderService {
     long totalProductOrders(int productId);
     boolean updateOrder(Order o);
     public void insertIntoQueue(Order o);
+    Order getOrder(int id);
 }
