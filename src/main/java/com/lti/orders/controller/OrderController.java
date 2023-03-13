@@ -29,4 +29,9 @@ public class OrderController {
     public long totalProductOrders(@PathVariable int id){
         return service.totalProductOrders(id);
     }
+
+    @GetMapping(value={"/order/{id}"})
+    public Order getOrderById(@PathVariable int id){
+        return service.getOrder(id);
+    }
 }
