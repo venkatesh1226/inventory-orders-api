@@ -13,11 +13,11 @@ public class Order {
     private int orderId;
     private int pId;
     private int count;
-    private long time;
+    private String time;
     private String status;
 
 
-    public Order(int orderId, int pId, int count, long time, String status) {
+    public Order(int orderId, int pId, int count, String time, String status) {
         this.orderId = orderId;
         this.pId = pId;
         this.count = count;
@@ -61,11 +61,11 @@ public class Order {
         this.count = count;
     }
 
-    public long getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(long time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
